@@ -22,6 +22,6 @@ const QuizSchema = new Schema({
 
 });
 
-// Define and Export Model
+QuizSchema.index({ _id: 1, title: -1 });
 const Quiz = mongoose.model('Quiz', QuizSchema);
 module.exports = Quiz;

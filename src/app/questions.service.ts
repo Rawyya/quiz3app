@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
 import { Quiz, Question } from './quiz.model';
 import { environment } from "src/environments/environment";
+import { ProfileComponent } from "./profile/profile.component";
 
 @Injectable({
   providedIn: "root"
@@ -12,6 +13,7 @@ import { environment } from "src/environments/environment";
 export class QuestionsService {
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
   private url = environment.URL
+  private _router: any;
   constructor(private http: HttpClient) {}
 
   public getQuizzes() {
@@ -29,4 +31,7 @@ export class QuestionsService {
       })
     );
   }
-}
+
+
+  }
+

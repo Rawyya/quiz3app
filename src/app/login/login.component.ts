@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.authService.loggedIn()) {
       const user = JSON.parse(sessionStorage.getItem('user'));
+      if (user)
       if (user.role === 'student') {
         this.router.navigateByUrl('/home');
       } else {

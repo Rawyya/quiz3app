@@ -1,7 +1,10 @@
+
+<div
+class="results"></div>
 <div *ngIf="quiz && !questions" class="spinner-grow text-primary"></div>
 
 <mat-card *ngIf="questions">
-
+  <p>{{timeLeft}} Seconds Left....</p>
   <div class="questions" *ngIf="!showResults">
     <app-question-form
       [question]="questions[currentQuestionIndex]"
@@ -17,5 +20,5 @@
     </mat-card-actions>
   </div>
 
-  <app-results *ngIf="showResults" [answers]="answers"></app-results>
+  <app-results *ngIf="showResults" [answers]="answers"  [quiz]='quiz'></app-results>
 </mat-card>

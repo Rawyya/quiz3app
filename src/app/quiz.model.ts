@@ -1,7 +1,8 @@
 // src/app/quiz.model.ts
 
 export class Choice {
-  constructor(public value: string, public correct?: boolean) {}
+
+  constructor(public value: string,public timePassed? :boolean  , public correct?: boolean) {}
 }
 
 export class Question {

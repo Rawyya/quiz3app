@@ -18,11 +18,13 @@ export class QuestionsComponent implements OnInit {
   answers: Answers;
   questions: Question[];
   currentQuestionIndex: number;
+  timeLeft: number = 60;
+  interval;
 
   showResults = false;
   state: any
   example: any;
-  
+
   constructor(private router: Router,private route: ActivatedRoute, public questionsService: QuestionsService){
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {data: any};
@@ -39,13 +41,15 @@ export class QuestionsComponent implements OnInit {
         {value:r.option3,correct:check(r.option3,r[r.correctOption])},
         {value:r.option4,correct:check(r.option4,r[r.correctOption])},
       ]))
-    
+
   }
 
   ngOnInit() {
     this.currentQuestionIndex = 0;
+    this.timeLeft =this.quiz.time
+    this.startTimer()
     this.answers = new Answers();
-  
+
   }
 
   updateChoice(choice: Choice){
@@ -61,11 +65,33 @@ export class QuestionsComponent implements OnInit {
     this.currentQuestionIndex++;
   }
 
+  timeEnd(){
+    this.currentQuestionIndex=this.questions.length - 1
+    for (let index = this.currentQuestionIndex; index < this.questions.length; index++) {
+
+      this.answers.values[this.currentQuestionIndex]= {correct: false,
+      value: ""}
+
+
+    }
+    this.nextOrViewResults()
+  }
+
   reset(){
     this.quiz = undefined;
     this.questions = undefined;
     this.answers = undefined;
     this.currentQuestionIndex = undefined;
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeEnd()
+      }
+    },1000)
   }
 
 }

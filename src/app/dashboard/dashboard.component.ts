@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { DialogService } from './confirmation-dialog/dialog.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,9 +25,15 @@ export class DashboardComponent implements OnInit {
   sortOrders = [];
   quiz: any;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private dialogService :DialogService) { }
 
   ngOnInit() {
+
+    this.authService.notifyDelete.subscribe((data) => {
+      if (data==='delete')
+      this.getQuiz()
+    }
+    )
     this.getQuiz();
   }
 
@@ -48,6 +55,16 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
+deleteQuiz(quiz :any){
+//   this.authService.deleteQuiz(quiz._id).subscribe((data) => {
+// this.getQuiz()
+//   })
+
+  this.dialogService.confirm(quiz._id,'Please confirm..', 'Do you really want to ... ?')
+  .then((confirmed) => console.log('User confirmed:', confirmed))
+  .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+
+}
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -62,6 +79,10 @@ export class DashboardComponent implements OnInit {
     this.rows = temp;
     // Whenever the filter changes, always go back to the first page
     // this.table.offset = 0;
+  }
+  editQuiz(quiz:any){
+    const navigationExtras: NavigationExtras = {state: {data: quiz}};
+    this.router.navigate(['/editQuiz'], navigationExtras);
   }
 
 }

@@ -4,32 +4,34 @@ btn-primary{
   mat-card{
     width: 256px
   }
-  
+  .results {
+    margin-top: 34px;
+   }
   body{
     background-color: #E8F75F;
   }
   .mat-app-background{
-    background-color: #000057;
+    background-color: #007bff;
   }
-  
+
   .btn-primary{
     background-color: rgb(61, 34, 34);
     font-size: large;
     color: #fff;
   }
-  
+
   mat-card{
     width: 60%;
     margin: auto;
     text-align: center;
-    background: #19677a;
+    background: #eea0d9;
     color: #fff;
     font-size: 27px;
     border-color: #fff;
     border-radius: 2px;
     border: 2px solid;
   }
-  
+
   .title{
     margin: auto;
     background-color: #000057;

@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('../server/config');
+const mongoose = require("mongoose");
 
 const User = require('../models/user');
 const Quiz = require('../models/quiz');
@@ -15,10 +16,11 @@ router.post('/register', (req, res) => {
 
         email: req.body.email,
         password: req.body.password,
+
         role: req.body.type
     });
 
-   
+
     User.addUser(newUser, (err, user) => {
         if (err) {
             res.json({ success: false, msg: 'Failed to Create User' });
@@ -33,6 +35,7 @@ router.post('/register', (req, res) => {
 router.post('/authenticate', (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+
     const userData = {
         email: email,
         password: password
@@ -78,6 +81,24 @@ router.post('/createQuiz', (req, res) => {
 
 });
 
+router.put('/editQuiz', (req, res) => {
+  console.log(req.body)
+let id =req.body._id
+// req.body.delete('_id');
+//
+
+   Quiz.findByIdAndUpdate(id,{$set:req.body},(error, response) => {
+    ((err,data)=> {
+      if (err) {
+          res.json({ success: false, msg: 'Failed to update Quiz' });
+      } else {
+          console.log(data);
+          return res.json({ success: true, msg: 'Quiz updated' });
+      }
+  });
+
+});})
+
 router.get('/getQuiz',  (req, res, next) => {
     Quiz.find({}, (error, response) => {
         if (error) {
@@ -87,6 +108,26 @@ router.get('/getQuiz',  (req, res, next) => {
         }
     });
 });
+
+router.delete('/deletQuiz/:id',  (req, res, next) => {
+  let id =req.params.id
+  console.log(id)
+  Quiz.findByIdAndDelete(id, (error, response) => {
+      if (error) {
+          return res.json({ success: false, msg: { error } });
+      } else {
+          return res.json({ success: true, msg: response });
+      }
+  });
+});
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

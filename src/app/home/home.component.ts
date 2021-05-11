@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -60,4 +60,9 @@ export class HomeComponent implements OnInit {
     // this.table.offset = 0;
   }
 
+
+  goto(quiz:any){
+    const navigationExtras: NavigationExtras = {state: {data: quiz}};
+    this.router.navigate(['/quizzing'], navigationExtras);
+  }
 }

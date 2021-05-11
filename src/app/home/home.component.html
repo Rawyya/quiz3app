@@ -18,7 +18,7 @@
             <div class="table-responsive" style="overflow: hidden !important;">
               <ngx-datatable #table class='table material fullscreen' style="box-shadow: none;" [columns]="columns"
                 [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [rows]='rows'>
-                
+
                 <ngx-datatable-column prop='title' name="Title">
                   <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
                     <span class="text-primary" style="font-weight: bold; font-size: 10px; cursor: pointer;" (click)="sort()">{{column.name}}</span>
@@ -44,7 +44,7 @@
                     <span class="text-primary" style="font-weight: bold; font-size: 10px;">{{column.name}}</span>
                   </ng-template>
                   <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                    <button (click)="giveQuiz(row)" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral"
+                    <button (click)="goto(row)" class="btn btn-primary btn-round btn-icon btn-icon-mini btn-neutral"
                       data-original-title="Edit Task" rel="tooltip" title="Edit Task" type="button">
                       Start Quiz
                     </button>
@@ -55,7 +55,7 @@
                   </ng-template>
                 </ngx-datatable-column>
               </ngx-datatable>
-            </div> 
+            </div>
         </div>
       </div>
     </div>

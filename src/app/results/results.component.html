@@ -1,13 +1,22 @@
 <!-- <p>results works!</p> -->
 <!-- // src/results/results.component.html -->
-<mat-card>
-    <mat-card-title class="title">Results</mat-card-title>
-    <mat-card-content class="answer mat-app-background" *ngFor="let a of answers.values" [ngClass]="{correct: a.correct}">
-      {{a.value}}
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" class="btn btn-primary">
-        <a routerLink="/welcome" class="btn btn-primary">Choose Another Quiz</a>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+
+
+  <div class="results">
+    <mat-card>
+      <mat-card-title class="title">Results</mat-card-title>
+      <mat-card-content class="answer mat-app-background" *ngFor="let a of answers.values" [ngClass]="{correct: a.correct}">
+        <br><span>    The Question :  {{a.question}}</span><br>
+        <span>    You answer  :  {{a.value}}</span><br>
+        <span> mark :{{a.mark}}</span> <br>
+        <span> Question Score  :{{a.QuestionScore}}</span>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" class="btn btn-primary">
+          <a routerLink="/home" class="btn btn-primary">Choose Another Quiz</a>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <h1>Your Score </h1>
+<h2>{{score}}</h2>
+  </div>

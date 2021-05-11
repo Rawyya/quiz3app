@@ -1,3 +1,41 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">UCA QUIZ APP</a>
-</nav>
+<div style="height: 50px;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <!-- <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+
+
+
+      </button> -->
+
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand">PiLand Quiz</a>
+      </nav>
+
+      <a routerLink='{{home}}'>
+        <img src="assets/logo.png" style="width: 150px; height: 60px;">
+
+      </a>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+
+
+      <a *ngFor="let item of menu" mat-button routerLink='{{item.link}}' >{{item.title}}</a>
+<!--
+        <a mat-button routerLink='/login'*ngIf="!identity">Login</a>
+
+        <a mat-button routerLink='/signup'*ngIf="!identity">Signup</a> -->
+
+
+
+        <a href="#"  mat-button   routerLink='/login' (click)='logout()' >Logout</a>
+
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+    <mat-sidenav #sidenav>
+
+    </mat-sidenav>
+</div>

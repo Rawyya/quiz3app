@@ -18,11 +18,12 @@ const UserSchema = new Schema({
         required: true
     },
 
+
     role: {
         type: String
     }
 
-    
+
 
 
 });
@@ -41,7 +42,7 @@ module.exports.getUserByEmail = (email, callback) => {
     User.findOne(query, callback);
 }
 
-module.exports.addUser = (newUser, callback) => { 
+module.exports.addUser = (newUser, callback) => {
     bcrypt.genSalt(10)
         .then((salt) => bcrypt.hash(newUser.password, salt))
         .then((hash) => {
