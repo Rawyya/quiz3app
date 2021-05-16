@@ -43,6 +43,10 @@ export class AuthService {
     return this.http.delete(this.url + '/apis/deletQuiz/'+quizId, { headers: this.headers });
   }
 
+
+  saveResults(result) {
+    return this.http.post(this.url + '/apis/saveResults', result, { headers: this.headers });
+  }
   quizDeleted() {
 this.notifyDelete.emit('delete')  }
   loggedIn() {

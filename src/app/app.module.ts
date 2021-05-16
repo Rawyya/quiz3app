@@ -44,6 +44,7 @@ import { DialogService } from './dashboard/confirmation-dialog/dialog.service';
 import { EditQuizComponent } from './dashboard/edit-quiz/edit-quiz.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashbComponent } from './modules/dashb/dashb.component';
+import { PieComponent } from './pie/pie.component';
 
 
 export function tokenGetter() {
@@ -66,7 +67,8 @@ export function tokenGetter() {
     ConfirmationDialogComponent,
     EditQuizComponent,
     DefaultComponent,
-    DashbComponent
+    DashbComponent,
+    PieComponent
 
   ],
   imports: [

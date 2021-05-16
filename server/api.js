@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 const User = require('../models/user');
 const Quiz = require('../models/quiz');
-
+const Result = require('../models/result');
 
 router.post('/register', (req, res) => {
 
@@ -81,6 +81,20 @@ router.post('/createQuiz', (req, res) => {
 
 });
 
+router.post('/saveResults', (req, res) => {
+
+    let result = new Result(req.body);
+
+    result.save((err,data)=> {
+        if (err) {
+            res.json({ success: false, msg: 'Failed to save result' });
+        } else {
+            console.log(data);
+            return res.json({ success: true, msg: 'result saved  '});
+        }
+    });
+
+});
 router.put('/editQuiz', (req, res) => {
   console.log(req.body)
 let id =req.body._id

@@ -23,12 +23,20 @@ export class EditQuizComponent implements OnInit {
       time: ["", Validators.required],
       subject: ["", Validators.required],
       _id: ["", Validators.required],
-      questions: this.fb.array([this.init()]),
+      questions: this.fb.array([]),
     });
 
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {data: any};
     this.quiz = state.data;
+   
+    if (this.quiz.questions.length>1){
+      this.quiz.questions.forEach(element => {
+        this.addQuestion()
+      });
+    
+
+    }
     this.form.controls['title'].setValue(this.quiz.title);
     this.form.controls['totalMarks'].setValue(this.quiz.totalMarks);
     this.form.controls['time'].setValue(this.quiz.time);
