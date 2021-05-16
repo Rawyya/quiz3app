@@ -123,6 +123,16 @@ router.get('/getQuiz',  (req, res, next) => {
     });
 });
 
+router.get('/getResults',  (req, res, next) => {
+    Result.find({}, (error, response) => {
+        if (error) {
+            return res.json({ success: false, msg: { error } });
+        } else {
+            return res.json({ success: true, msg: response });
+        }
+    });
+});
+
 router.delete('/deletQuiz/:id',  (req, res, next) => {
   let id =req.params.id
   console.log(id)

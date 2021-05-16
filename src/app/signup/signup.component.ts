@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
             if (val.type === 'student') {
               this.router.navigateByUrl('/home');
             } else {
-              this.router.navigateByUrl('/dashboard');
+              this.router.navigateByUrl('/quizzes');
             }
           }
         );

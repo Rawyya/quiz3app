@@ -57,7 +57,7 @@ export class NewQuizComponent implements OnInit {
 
             if (resp['success'] === true) {
               this.form.reset();
-              this.router.navigateByUrl('/dashboard');
+              this.router.navigateByUrl('/quizzes');
             } else {
               console.log('error');
             }
@@ -67,7 +67,7 @@ export class NewQuizComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/quizzes');
   }
 
   ngOnInit() {

@@ -12,14 +12,16 @@ import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent} from './profile/profile.component';
 import { TutorielComponent } from './tutoriel/tutoriel.component';
 import { EditQuizComponent } from './dashboard/edit-quiz/edit-quiz.component';
+import { DashboardingComponent } from './dashboarding/dashboarding.component';
 
 const routes: Routes = [
 
-  // { path: '', component: LoginComponent},
+   { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'quizzes', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardingComponent },
   { path: 'newquiz', component: NewQuizComponent  },
   // { path: '**', redirectTo: 'home' }
   { path: 'welcome', component: WelcomeComponent },

@@ -39,6 +39,10 @@ export class AuthService {
   getQuiz() {
     return this.http.get(this.url + '/apis/getQuiz', { headers: this.headers });
   }
+
+  getResults() {
+    return this.http.get(this.url + '/apis/getResults', { headers: this.headers });
+  }
   deleteQuiz(quizId) {
     return this.http.delete(this.url + '/apis/deletQuiz/'+quizId, { headers: this.headers });
   }

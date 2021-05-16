@@ -46,7 +46,9 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { DashbComponent } from './modules/dashb/dashb.component';
 import { PieComponent } from './pie/pie.component';
 
-
+import { ChartsModule } from 'ng2-charts';
+import { LinechartComponent } from './linechart/linechart.component';
+import { DashboardingComponent } from './dashboarding/dashboarding.component';
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
 }
@@ -68,12 +70,14 @@ export function tokenGetter() {
     EditQuizComponent,
     DefaultComponent,
     DashbComponent,
-    PieComponent
+    PieComponent,
+    LinechartComponent,
+    DashboardingComponent
 
   ],
   imports: [
     BrowserModule,MatCardModule,
-    AppRoutingModule,
+    AppRoutingModule,ChartsModule,
     NgbModule,
     HttpClientModule,
     RouterModule,

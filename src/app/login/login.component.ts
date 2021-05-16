@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             if (resp['user']['role'] === 'student') {
               this.router.navigateByUrl('/home');
             } else {
-              this.router.navigateByUrl('/dashboard');
+              this.router.navigateByUrl('/quizzes');
             }
           }
         );
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       if (user.role === 'student') {
         this.router.navigateByUrl('/home');
       } else {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/quizzes');
       }
     }
   }
