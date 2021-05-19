@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Chart, HIGHCHARTS_MODULES} from 'angular-highcharts';
+import { AuthService } from '../service/auth.service';
 
 
 @Component({
@@ -10,9 +11,15 @@ import { Chart, HIGHCHARTS_MODULES} from 'angular-highcharts';
 })
 export class LineChartComponent implements OnInit {
   chart: Chart;
+  temp = [];
+  table: any;
+  data: any=[]
 
+  constructor(private authService: AuthService) { }
+  sortOrders = [];
+  quiz: any;
   ngOnInit() {
-    this.init();
+   this.getQuiz()
   }
 
   addPoint() {
@@ -32,7 +39,23 @@ export class LineChartComponent implements OnInit {
   removeSerie() {
     this.chart.removeSeries(this.chart.ref.series.length - 1);
   }
-
+  getQuiz() {
+    this.authService.getResults().subscribe((data) => {
+      console.log(data);
+      if (data['success'] === true) {
+        this.quiz = data['msg'];
+  this.quiz.map(x=>{
+    var percent =( x.score  / x.totalMarks)*100 ;
+    this.data.push(percent?percent:0)
+  })
+  this.init()
+        this.temp = [...this.quiz];
+    
+      } else {
+        console.log('error');
+      }
+    })
+  }
   init() {
     let chart = new Chart({
       chart: {
@@ -45,16 +68,16 @@ export class LineChartComponent implements OnInit {
         enabled: false
       },
       yAxis:{
-        min:30,
-        max:500,
+        min:0,
+        max:100,
         title: {
-          text: "vinoth"
+          text: "percentage"
         },
         gridLineWidth: 0,
         labels:{
           formatter: function () {
             console.log(this.value);
-               return this.value + ' km';
+               return this.value ;
             }
         }
 
@@ -63,8 +86,8 @@ export class LineChartComponent implements OnInit {
         y: 25,
       },
       series: [{
-        name: 'Line 1',
-        data: [20,30,40,50]
+        name: 'scores',
+        data: this.data
       }]
     });
     // chart.addPoint(35);

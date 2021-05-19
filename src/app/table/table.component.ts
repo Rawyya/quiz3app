@@ -11,9 +11,10 @@ export class TableComponent implements OnInit {
 
   rows = [];
   columns = [
-    { prop: 'title', name: 'Title' },
-    { prop: 'subject', name: 'Subject' },
-    { prop: 'time', name: 'Time' },
+    { prop: 'student', name: 'Student' },
+    { prop: 'date', name: 'Date' },
+    { prop: 'score', name: 'score' },
+    { prop: 'quiz', name: 'Quiz' },
     { prop: 'totalMarks', name: 'Total Marks' },
 
   ];
@@ -31,7 +32,7 @@ export class TableComponent implements OnInit {
   }
 
   getQuiz() {
-    this.authService.getQuiz().subscribe((data) => {
+    this.authService.getResults().subscribe((data) => {
       console.log(data);
       if (data['success'] === true) {
         this.quiz = data['msg'];
@@ -45,24 +46,8 @@ export class TableComponent implements OnInit {
     })
   }
 
-  updateFilter(event) {
-    const val = event.target.value.toLowerCase();
-
-    // filter our data
-    const temp = this.temp.filter(function (d) {
-      // console.log(d);
-      return d.title.toLowerCase().indexOf(val) !== -1 || d.subject.toLowerCase().indexOf(val) !== -1;
-    });
-
-    // update the rows
-    this.rows = temp;
-    // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
-  }
 
 
-  goto(quiz:any){
-    const navigationExtras: NavigationExtras = {state: {data: quiz}};
-    this.router.navigate(['/quizzing'], navigationExtras);
-  }
+
+
 }
