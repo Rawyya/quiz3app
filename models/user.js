@@ -12,7 +12,11 @@ const UserSchema = new Schema({
         required: true
     },
 
-
+    resetPasswordCode: {
+        type: String,
+        unique: true,
+       
+    },
     password: {
         type: String,
         required: true
@@ -50,6 +54,15 @@ module.exports.addUser = (newUser, callback) => {
             newUser.save(callback);
         }).catch((err) => console.log('There was an error adding a user.'));
 }
+
+module.exports.hashPassword = (pass, callback) => {
+    bcrypt.genSalt(10)
+        .then((salt) => bcrypt.hash(pass, salt))
+        .then((hash) => {
+            callback(null, hash);
+        }).catch((err) => console.log('There was an error while hashing .'+err));
+}
+
 
 module.exports.comparePassword = (candidatePassword, hash, callback) => {
     bcrypt.compare(candidatePassword, hash)

@@ -53,6 +53,8 @@ import { OutputGraphComponent } from './dashboarding/output-graph/output-graph.c
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { ChartModule } from 'angular-highcharts';
 import { TableComponent } from './table/table.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
 }
@@ -83,7 +85,11 @@ export function tokenGetter() {
 
     LineChartComponent,
 
-    TableComponent
+    TableComponent,
+
+    ForgetPasswordComponent,
+
+    UpdatePasswordComponent
 
   ],
   imports: [

@@ -29,6 +29,10 @@ export class AuthService {
   authenticate(user) {
     return this.http.post(this.url + '/apis/authenticate', user, { headers: this.headers });
   }
+
+  updatePassword(user) {
+    return this.http.post(this.url + '/apis/updatePassword', user, { headers: this.headers });
+  }
   createQuiz(quiz) {
     return this.http.post(this.url + '/apis/createQuiz', quiz, { headers: this.headers });
   }
@@ -47,7 +51,14 @@ export class AuthService {
     return this.http.delete(this.url + '/apis/deletQuiz/'+quizId, { headers: this.headers });
   }
 
-
+  checkEmaailExist(email) {
+ let j =   {email:email}
+    return this.http.post(this.url + '/apis/checkEmaailExist', j, { headers: this.headers });
+  }
+  checkResetPasswordCode(values) {
+   
+       return this.http.post(this.url + '/apis/checkResetPasswordCode', values, { headers: this.headers });
+     }
   saveResults(result) {
     return this.http.post(this.url + '/apis/saveResults', result, { headers: this.headers });
   }

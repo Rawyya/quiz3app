@@ -13,6 +13,8 @@ import { ProfileComponent} from './profile/profile.component';
 import { TutorielComponent } from './tutoriel/tutoriel.component';
 import { EditQuizComponent } from './dashboard/edit-quiz/edit-quiz.component';
 import { DashboardingComponent } from './dashboarding/dashboarding.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 const routes: Routes = [
 
@@ -32,6 +34,8 @@ const routes: Routes = [
   {path : 'logout' , component : LogoutComponent},
   {path : 'profile' , component : ProfileComponent},
   {path : 'tutoriel' , component : TutorielComponent},
+  {path : 'forgetPassword' , component : ForgetPasswordComponent},
+  {path : 'resetPassword' , component : UpdatePasswordComponent}
 ];
 
 @NgModule({
