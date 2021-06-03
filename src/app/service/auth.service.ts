@@ -56,7 +56,7 @@ export class AuthService {
     return this.http.post(this.url + '/apis/checkEmaailExist', j, { headers: this.headers });
   }
   checkResetPasswordCode(values) {
-   
+
        return this.http.post(this.url + '/apis/checkResetPasswordCode', values, { headers: this.headers });
      }
   saveResults(result) {

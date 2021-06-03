@@ -30,13 +30,18 @@ export class SignupComponent implements OnInit {
     if (val.email && val.password && val.type) {
       this.authService.register(val)
         .subscribe(
-          () => {
-            console.log("User is registered.");
-            if (val.type === 'student') {
-              this.router.navigateByUrl('/home');
-            } else {
-              this.router.navigateByUrl('/quizzes');
-            }
+          ( ) => {
+
+            this.authService.authenticate(val).subscribe(
+                (resp ) => {
+                  sessionStorage.setItem("id_token", resp["token"]);
+                  sessionStorage.setItem("user", JSON.stringify(resp["user"]));
+                  this.router.navigateByUrl('/quizzes').then(() => {
+                    window.location.reload();
+                  });
+                })
+
+
           }
         );
     }

@@ -55,33 +55,33 @@ export class PieComponent implements OnInit {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Chrome',
+            name: 'English quiz',
             y: 59.41,
             sliced: true,
             selected: true
         }, {
-            name: 'Internet Explorer',
+            name: 'Math test',
             y: 11.84
         }, {
-            name: 'Firefox',
+            name: 'Orthographe et grammaire',
             y: 11.85
         }, {
-            name: 'Edge',
+            name: 'Scientific question',
             y: 4.67
         }, {
-            name: 'Safari',
+            name: 'Littérature',
             y: 5.18
         }, {
-            name: 'Sogou Explorer',
+            name: 'Scientific question',
             y: 1.64
         }, {
-            name: 'Opera',
+            name: 'Calcul pratique',
             y: 1.6
         }, {
-            name: 'QQ',
+            name: 'Culture',
             y: 1.2
         }, {
-            name: 'Other',
+            name: 'physic',
             y: 2.61
         }]
     }]

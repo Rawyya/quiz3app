@@ -55,6 +55,7 @@ import { ChartModule } from 'angular-highcharts';
 import { TableComponent } from './table/table.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { AuthGuard } from './auth.guard';
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
 }
@@ -123,7 +124,7 @@ export function tokenGetter() {
     }),
     BrowserAnimationsModule
   ],
-  providers: [AuthService,DialogService
+  providers: [AuthService,AuthGuard,DialogService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

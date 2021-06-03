@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
-import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+
 
 @Component({
   selector: 'app-forget-password',
@@ -16,7 +16,7 @@ export class ForgetPasswordComponent implements OnInit {
   resetting: boolean
   data: any;
   constructor(private fb: FormBuilder,
-    private authService: AuthService, private router: Router) { 
+    private authService: AuthService, private router: Router) {
       this.form = this.fb.group({
         email: ['', Validators.required]
       });
@@ -40,9 +40,9 @@ export class ForgetPasswordComponent implements OnInit {
         .subscribe(
           (resp:any) => {
             this.data =resp
-            
+
          this.resetting =resp.user?true:false
-           
+
           }
         );
     }
@@ -59,7 +59,7 @@ export class ForgetPasswordComponent implements OnInit {
             const navigationExtras: NavigationExtras = {state: {data: val}};
             this.router.navigate(['/resetPassword'], navigationExtras);
           }
-           
+
           }
         );
     }

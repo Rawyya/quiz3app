@@ -15,18 +15,19 @@ import { EditQuizComponent } from './dashboard/edit-quiz/edit-quiz.component';
 import { DashboardingComponent } from './dashboarding/dashboarding.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
 
    { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'quizzes', component: DashboardComponent },
-  { path: 'dashboard', component: DashboardingComponent },
+  { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
+  { path: 'quizzes', component: DashboardComponent ,canActivate:[AuthGuard]},
+  { path: 'dashboard', component: DashboardingComponent,canActivate:[AuthGuard] },
   { path: 'newquiz', component: NewQuizComponent  },
   // { path: '**', redirectTo: 'home' }
-  { path: 'welcome', component: WelcomeComponent },
+  { path: 'welcome', component: WelcomeComponent ,canActivate:[AuthGuard]},
   { path: 'editQuiz', component: EditQuizComponent },
   { path: 'quizzing', component: QuestionsComponent },
   { path: 'd', redirectTo: "welcome", pathMatch: "prefix" },
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path : 'logout' , component : LogoutComponent},
   {path : 'profile' , component : ProfileComponent},
   {path : 'tutoriel' , component : TutorielComponent},
+
   {path : 'forgetPassword' , component : ForgetPasswordComponent},
   {path : 'resetPassword' , component : UpdatePasswordComponent}
 ];
