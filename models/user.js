@@ -14,8 +14,8 @@ const UserSchema = new Schema({
 
     resetPasswordCode: {
         type: String,
-        
-       
+
+
     },
     password: {
         type: String,

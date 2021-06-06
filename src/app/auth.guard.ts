@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild{
     let route ="login"
 let user  =       JSON.parse(sessionStorage.getItem('user'));
     if (user!=null) {
-      if (window.location.pathname=='/dashboard' && user.role =='student'){
+      if ((window.location.pathname=='/dashboard' || window.location.pathname=='/quizzes') && user.role =='student'){
        route ='home'
       } else{
         return true;
