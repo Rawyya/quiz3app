@@ -34,8 +34,8 @@ export class SignupComponent implements OnInit {
         if (!userinfo.msg){
         this.authService.register(val)
         .subscribe(
-          ( ) => {
-
+          ( dtata) => {
+            dtata =dtata
             this.authService.authenticate(val).subscribe(
                 (resp ) => {
                   sessionStorage.setItem("id_token", resp["token"]);
