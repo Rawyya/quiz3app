@@ -113,13 +113,13 @@ User.findByIdAndUpdate(user._id, { $set: {password:data} }, (error, response) =>
 var transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "",
-    pass: "",
+    user: "piland1998@gmail.com",
+    pass: "92707683",
   },
 });
 
 var mailOptions = {
-  from: "yaakoubisuleiman@gmail.com",
+  from: "piland1998@gmail.com",
   to: "myfriend@yahoo.com",
   subject: "reset password ",
   text: "reset your password ",
