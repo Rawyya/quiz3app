@@ -24,7 +24,9 @@ export class AuthService {
   register(newUser) {
     return this.http.post(this.url + '/apis/register', newUser, { headers: this.headers });
   }
-
+  userExist(email) {
+    return this.http.post(this.url + '/apis/userExist', email, { headers: this.headers });
+  }
 
   authenticate(user) {
     return this.http.post(this.url + '/apis/authenticate', user, { headers: this.headers });

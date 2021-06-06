@@ -11,6 +11,7 @@ import { AuthService } from '../service/auth.service';
 export class SignupComponent implements OnInit {
 
   form: FormGroup;
+  message: string
 
 
   constructor(private fb: FormBuilder,
@@ -28,7 +29,10 @@ export class SignupComponent implements OnInit {
     const val = this.form.value;
 
     if (val.email && val.password && val.type) {
-      this.authService.register(val)
+
+      this.authService.userExist(val).subscribe((userinfo:any)=>{
+        if (!userinfo.msg){
+        this.authService.register(val)
         .subscribe(
           ( ) => {
 
@@ -44,6 +48,11 @@ export class SignupComponent implements OnInit {
 
           }
         );
+        }else{
+          this.message ='user exist try another email'
+        }
+      })
+      
     }
   }
 

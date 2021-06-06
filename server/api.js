@@ -171,6 +171,18 @@ router.post("/createQuiz", (req, res) => {
   });
 });
 
+router.post("/userExist", (req, res) => {
+  const email = req.body.email;
+  console.log(email)
+  User.getUserByEmail(email, (err, data) => {
+    if (err) {
+      res.json({ success: false, msg: "Failed to save result" });
+    } else {
+      console.log(data);
+      return res.json({ success: true, msg: data});
+    }
+  });
+});
 router.post("/saveResults", (req, res) => {
   let result = new Result(req.body);
 
