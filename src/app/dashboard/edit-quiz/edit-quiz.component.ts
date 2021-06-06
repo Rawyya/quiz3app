@@ -30,7 +30,7 @@ export class EditQuizComponent implements OnInit {
     const state = navigation.extras.state as {data: any};
     this.quiz = state.data;
    
-    if (this.quiz.questions.length>1){
+    if (this.quiz.questions.length>0){
       this.quiz.questions.forEach(element => {
         this.addQuestion()
       });
